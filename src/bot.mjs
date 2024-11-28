@@ -11,12 +11,7 @@ bot.on('message', (msg) => {
     const chatId = msg.chat.id;
     const messageText = msg.text;
 
-    // Process the incoming message here
     if (messageText === '/start') {
-        bot.sendMessage(chatId, 'Welcome to the WeekForecast bot!');
-    }
-
-    if (messageText === '/city') {
         axios
             .get('https://simplemaps.com/static/data/country-cities/lt/lt.json')
             .then((response) => {
