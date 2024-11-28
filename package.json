@@ -1,0 +1,17 @@
+{
+  "name": "forecast-tg-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot that provides weekly weather forecast",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "node-telegram-bot-api": "^0.66.0",
+    "stream-json": "^1.9.1"
+  }
+}
