@@ -1,10 +1,9 @@
 import axios from 'axios';
 import TelegramBot from 'node-telegram-bot-api';
-const token = '7832125182:AAGSHl8ObEMPLwHemK9Ee8lyBsjDZ8YwFak';
-const bot = new TelegramBot(token, { polling: true });
+import 'dotenv/config';
 
-const weatherApiKey = '6b9e27820e794e649b7103756242811';
-const weatherApiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&days=7`;
+const bot = new TelegramBot(process.env.TG_TOKEN, { polling: true });
+
 let Q;
 
 bot.on('message', (msg) => {
@@ -43,8 +42,8 @@ bot.on('callback_query', function onCallbackQuery(callbackQuery) {
         message_id: msg.message_id,
         parse_mode: 'HTML',
     };
-
     const city = msg.reply_markup.inline_keyboard[+action][0].text;
+    const weatherApiUrl = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&days=7`;
 
     axios.get(`${weatherApiUrl}&${Q || `q=${city}`}`).then((response) => {
         bot.editMessageText(
